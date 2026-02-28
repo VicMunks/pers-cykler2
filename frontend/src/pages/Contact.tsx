@@ -6,7 +6,7 @@ export default function Contact() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const form = e.target;
-    const data = new FormData(form);
+    //const data = new FormData(form);
 
     // Frontend-only placeholder: here we would POST to backend endpoint
     // For now simulate success
