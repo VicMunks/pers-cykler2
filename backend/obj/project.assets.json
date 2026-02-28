@@ -88,11 +88,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Victo\\projects\\pers-cykler\\backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\Victo\\projects\\pers-cykler\\pers-cykler2\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\Victo\\projects\\pers-cykler\\backend\\backend.csproj",
+      "projectPath": "C:\\Users\\Victo\\projects\\pers-cykler\\pers-cykler2\\backend\\backend.csproj",
       "packagesPath": "C:\\Users\\Victo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Victo\\projects\\pers-cykler\\backend\\obj\\",
+      "outputPath": "C:\\Users\\Victo\\projects\\pers-cykler\\pers-cykler2\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Victo\\AppData\\Roaming\\NuGet\\NuGet.Config"
