@@ -14,17 +14,15 @@ export default function Contact() {
     const form = e.target;
     
     try {
-      const result = await emailjs.sendForm(
+      await emailjs.sendForm(
         "service_5t6wuwc",
         "template_1bvosin",
         form
       );
       
-      console.log("[Contact] Email sent successfully:", result);
       setStatus("Sendt! Vi vender tilbage snarest.");
       form.reset();
     } catch (err: any) {
-      console.log("[Contact] Error sending email:", err);
       setStatus(`Fejl: ${err.message || "Kunne ikke sende besked"}`);
     }
   };

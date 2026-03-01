@@ -1,36 +1,73 @@
-## Pers Cykler – Local development
+# Pers Cykler – Web Platform
 
-### Backend (ASP.NET Core)
+Modern hjemmeside for Pers Cykler — Odense's ældste cykelhandler siden 1981.
 
-- **Requirements**: .NET SDK 10
-- **Start the API**:
-  - From the project root run:
-    - `dotnet run --project backend/backend.csproj`
-  - The API listens on `http://localhost:5078` (see `backend/Properties/launchSettings.json`).
-- **Health check**:
-  - `GET http://localhost:5078/api/health` should return `OK`.
+## Tech Stack
 
-- **Kontakt-API**:
-  - `POST http://localhost:5078/api/contact` accepts JSON `{ name, email, subject, message }` and will attempt to send an email.
-  - Configuration is driven by environment variables:
-    - `SMTP_HOST` (default `smtp.gmail.com`)
-    - `SMTP_PORT` (default `587`)
-    - `SMTP_USER` / `SMTP_PASS` – credentials for the SMTP server
-    - `CONTACT_TO` – e‑mail address to receive messages (defaults to `victor.munk1234@gmail.com` for testing)
-    - If credentials are omitted, the mail is sent without authentication which may work on local SMTP relay.
+- **Frontend**: React 19 + TypeScript + Vite + Tailwind CSS
+- **Hosting**: Vercel (frontend only)
+- **Email**: EmailJS (kontaktformular)
 
-### Frontend (React + Vite)
+## Getting Started
 
-- **Requirements**: Node.js 20+ and npm
-- **Install dependencies**:
-  - From the project root:
-    - `cd frontend`
-    - `npm install`
-- **Run in dev mode**:
-  - `npm run dev`
-  - Open the printed local URL (usually `http://localhost:5173`).
-  - The Vite dev server proxies API calls from `/api/*` to `http://localhost:5078`, so the Home page can call `/api/health`.
-- **Build for production**:
-  - `npm run build`
-  - Output is written to `frontend/dist`.
+### Requirements
+
+- Node.js 20+
+- npm
+
+### Installation
+
+```bash
+cd frontend
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+Output written to `frontend/dist`.
+
+## Pages
+
+- **Home** — Landing page with overview
+- **Cykler** — Bicycle brands and types
+- **Scootere** — Electric scooter models (MotoCr)
+- **Reparation** — Service & repair overview with FAQ
+- **Om** — About the shop and staff
+- **Kontakt** — Contact form (EmailJS) + Google Maps + info
+
+## Contact Form
+
+The contact form uses **EmailJS** to send messages directly from the frontend. Configuration:
+
+- **Public Key**: `RCrbNpyddjkxNAEzQ`
+- **Service ID**: `service_5t6wuwc`
+- **Template ID**: `template_1bvosin`
+- **Recipient**: `victor.munk1234@gmail.com`
+
+Messages are sent via EmailJS without a backend server.
+
+## Future Enhancements
+
+When implementing a product catalog with admin features, consider:
+- **Supabase** for serverless database + authentication
+- **Real-time syncing** for inventory updates
+- **Shopping cart** functionality (for future e-commerce)
+
+## Deployment
+
+Deployed on **Vercel** with automatic deployments from the `main` branch.
+
+Ensure SPA routing is configured in `frontend/vercel.json`.
 

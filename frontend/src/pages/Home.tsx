@@ -1,15 +1,6 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [backendStatus, setBackendStatus] = useState("Tjekker backend...");
-
-  useEffect(() => {
-    fetch("/api/health")
-      .then((r) => r.text())
-      .then((text) => setBackendStatus(text || "OK"))
-      .catch(() => setBackendStatus("Backend kan ikke kontaktes"));
-  }, []);
 
   return (
     <main>
@@ -51,10 +42,10 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 font-bold uppercase">
-                    Systemstatus
+                    Tilgængelighed
                   </p>
                   <p className="font-bold text-sm text-gray-800">
-                    {backendStatus}
+                    Åben nu
                   </p>
                 </div>
               </div>
