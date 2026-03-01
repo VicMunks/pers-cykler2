@@ -6,12 +6,37 @@ export default function Contact() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const form = e.target;
-    //const data = new FormData(form);
+    const data = new FormData(form);
+    const payload: any = {};
+    data.forEach((value, key) => {
+      payload[key] = value;
+    });
 
-    // Frontend-only placeholder: here we would POST to backend endpoint
-    // For now simulate success
-    setStatus("Sendt! Vi vender tilbage snarest.");
-    form.reset();
+    console.log("[Contact] Form submitted with payload:", payload);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      
+      console.log("[Contact] Response status:", res.status);
+      console.log("[Contact] Response ok:", res.ok);
+      
+      const responseBody = await res.json();
+      console.log("[Contact] Response body:", responseBody);
+      
+      if (!res.ok) {
+        throw new Error(responseBody?.error || "Kunne ikke sende besked");
+      }
+      
+      setStatus("Sendt! Vi vender tilbage snarest.");
+      form.reset();
+    } catch (err: any) {
+      console.log("[Contact] Error:", err);
+      setStatus(`Fejl: ${err.message}`);
+    }
   };
 
   return (
@@ -50,7 +75,6 @@ export default function Contact() {
               <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Send besked</button>
               {status && <p className="text-sm text-green-600">{status}</p>}
             </div>
-            <p className="text-xs text-gray-500 mt-3">Bemærk: formularen er frontend-only for nu; vi kobler til backend senere.</p>
           </form>
 
           <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
