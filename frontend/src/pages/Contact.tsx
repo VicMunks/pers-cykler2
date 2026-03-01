@@ -1,41 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [status, setStatus] = useState("");
 
+  useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init("RCrbNpyddjkxNAEzQ");
+  }, []);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const form = e.target;
-    const data = new FormData(form);
-    const payload: any = {};
-    data.forEach((value, key) => {
-      payload[key] = value;
-    });
-
-    console.log("[Contact] Form submitted with payload:", payload);
-
+    
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const result = await emailjs.sendForm(
+        "service_5t6wuwc",
+        "template_1bvosin",
+        form
+      );
       
-      console.log("[Contact] Response status:", res.status);
-      console.log("[Contact] Response ok:", res.ok);
-      
-      const responseBody = await res.json();
-      console.log("[Contact] Response body:", responseBody);
-      
-      if (!res.ok) {
-        throw new Error(responseBody?.error || "Kunne ikke sende besked");
-      }
-      
+      console.log("[Contact] Email sent successfully:", result);
       setStatus("Sendt! Vi vender tilbage snarest.");
       form.reset();
     } catch (err: any) {
-      console.log("[Contact] Error:", err);
-      setStatus(`Fejl: ${err.message}`);
+      console.log("[Contact] Error sending email:", err);
+      setStatus(`Fejl: ${err.message || "Kunne ikke sende besked"}`);
     }
   };
 
@@ -67,9 +57,9 @@ export default function Contact() {
             <h3 className="font-semibold text-gray-900 mb-4">Send os en besked</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
               <input name="name" required placeholder="Navn" className="border border-gray-200 rounded-md p-2" />
-              <input name="email" type="email" required placeholder="E-mail" className="border border-gray-200 rounded-md p-2" />
+              <input name="time" type="email" required placeholder="E-mail" className="border border-gray-200 rounded-md p-2" />
             </div>
-            <input name="subject" placeholder="Emne" className="w-full border border-gray-200 rounded-md p-2 mb-3" />
+            <input name="title" placeholder="Emne" className="w-full border border-gray-200 rounded-md p-2 mb-3" />
             <textarea name="message" required placeholder="Din besked" rows={5} className="w-full border border-gray-200 rounded-md p-2 mb-3" />
             <div className="flex items-center gap-3">
               <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Send besked</button>
