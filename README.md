@@ -1,6 +1,6 @@
-# Pers Cykler – Web Platform
+# Pers cykler – Web Platform
 
-Modern hjemmeside for Pers Cykler — Odense's ældste cykelhandler siden 1981.
+Modern hjemmeside for Pers cykler — Odense's ældste cykelhandler siden 1981.
 
 ## Tech Stack
 
@@ -40,7 +40,7 @@ Output written to `frontend/dist`.
 
 ## Pages
 
-- **Home** — Landing page with overview
+- **Home** — Landing page with overview (contains sections for financing, ABUS locks and a Google map; the top‑hero and ABUS images are referenced as `/images/bike-hero.jpg` and `/images/abus-lock.jpg` and should be added to `frontend/public/images` or replaced with your own URLs)
 - **Cykler** — Bicycle brands and types
 - **Scootere** — Electric scooter models (MotoCr)
 - **Reparation** — Service & repair overview with FAQ

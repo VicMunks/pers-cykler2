@@ -28,7 +28,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-16 bg-[#fafaf9]">
+    <section id="contact" className="py-16 bg-[#fafaf9]">
       <div className="max-w-6xl mx-auto px-6 space-y-6">
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900">Kontakt</h1>
         <p className="text-gray-600">Har du brug for hjælp til din cykel eller vil du booke et eftersyn? Brug formularen eller kontakt os direkte.</p>
@@ -46,7 +46,7 @@ export default function Contact() {
 
           <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
             <h2 className="font-semibold text-gray-900 mb-2">Adresse</h2>
-            <p className="text-sm text-gray-700">Pers Cykler<br/>Vesterbro 95<br/>5000 Odense C</p>
+            <p className="text-sm text-gray-700">Pers cykler<br/>Vesterbro 95<br/>5000 Odense C</p>
           </div>
         </div>
 
@@ -69,7 +69,7 @@ export default function Contact() {
             <h3 className="font-semibold text-gray-900 mb-4">Find os</h3>
             <div className="w-full h-64 rounded-md overflow-hidden border border-gray-100">
               <iframe
-                title="Pers Cykler - kort"
+                title="Pers cykler - kort"
                 className="w-full h-full"
                 src="https://www.google.com/maps?q=Vesterbro%2095%2C%205000%20Odense&output=embed"
                 loading="lazy"

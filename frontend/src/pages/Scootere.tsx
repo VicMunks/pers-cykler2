@@ -6,7 +6,8 @@ export default function Scootere() {
       speed: "Max 30 km/t",
       features: ["Dansk godkendelse", "Batterikapacitet: 25-30 km", "Vægt: fra 10 kg", "Fuldt ledelsesbar"],
       icon: "⚡",
-      color: "#3B82F6"
+      color: "#3B82F6",
+      link: "https://motocr.dk/lille-knallert-30km-t/"
     },
     {
       name: "45 km/t Scootere",
@@ -14,7 +15,8 @@ export default function Scootere() {
       speed: "Max 45 km/t",
       features: ["Kraftigere motor", "Batterikapacitet: 45-60 km", "Vægt: 13-16 kg", "Dobbelt bremsesystem"],
       icon: "🚀",
-      color: "#EF4444"
+      color: "#EF4444",
+      link: "https://motocr.dk/stor-knallert-45km-t/"
     },
     {
       name: "El-scootere",
@@ -22,7 +24,8 @@ export default function Scootere() {
       speed: "Max 45 km/t+",
       features: ["Digitalt display", "Smart suspension", "Batterikapacitet: 60+ km", "App-kontrol & GPS"],
       icon: "🔋",
-      color: "#10B981"
+      color: "#10B981",
+      link: "https://motocr.dk/lille-el-knallert-30km-t/"
     }
   ];
 
@@ -48,7 +51,7 @@ export default function Scootere() {
                 MotoCr leverer højtydende scootere til det danske marked — fra økonomiske 30 km/t modeller til kraftfulde 45 km/t varianter. Vi har løsningen til enhver transport-behov.
               </p>
               <a
-                href="https://motocr.com"
+                href="https://motocr.dk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-200 gap-2"
@@ -96,12 +99,15 @@ export default function Scootere() {
                   </ul>
                 </div>
 
-                <button
-                  className="w-full py-3 px-4 rounded-xl font-bold text-white transition-all duration-200 hover:opacity-90 hover:scale-105"
+                <a
+                  href={model.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full inline-block text-center py-3 px-4 rounded-xl font-bold text-white transition-all duration-200 hover:opacity-90 hover:scale-105"
                   style={{ backgroundColor: model.color }}
                 >
                   Se priser
-                </button>
+                </a>
               </article>
             ))}
           </div>
@@ -130,14 +136,14 @@ export default function Scootere() {
       {/* Accessories & Customization Placeholder */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-12 border border-purple-200">
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-12 border border-purple-200">
             <h2 className="text-3xl font-extrabold text-gray-900 mb-4">🎨 Tilbehør & Personalisering</h2>
             <p className="text-lg text-gray-600 mb-6">
               Farvevalgmuligheder, LED-lys, tasker og beskyttelsesutstyr — kom forbi butikken for at se alt det, du kan tilføje til din scooter.
             </p>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-200">
+            <a href="https://motocr.dk/tilbehoer/" target="_blank" rel="noreferrer" className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-xl transition-all duration-200 inline-block">
               Udforsk Tilbehør
-            </button>
+            </a>
           </div>
         </div>
       </section>

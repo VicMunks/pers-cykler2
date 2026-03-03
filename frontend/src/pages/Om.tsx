@@ -25,7 +25,7 @@ export default function Om() {
       <div className="max-w-4xl mx-auto px-6">
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Om os</h1>
 
-        <p className="text-gray-600 mb-6">Per's Cykler har eksisteret siden 1981 under samme ejer. Vi er en traditionsrig forretning, der hjælper hele familien med kvalitetscykler og scootere — fra daglig pendling til fritidsbrug.</p>
+        <p className="text-gray-600 mb-6">Pers cykler har eksisteret siden 1981 under samme ejer. Vi er en traditionsrig forretning, der hjælper hele familien med kvalitetscykler og scootere — fra daglig pendling til fritidsbrug.</p>
 
         <p className="text-gray-600 mb-6">Vi tilbyder et bredt udvalg af mærker, reservedele og professionel vejledning, og vores værksted klarer både simple reparationer og større eftersyn. Kom forbi til en snak — vi giver gerne råd om hvad der passer til dine behov.</p>
 
