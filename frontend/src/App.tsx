@@ -5,7 +5,8 @@ import Cykler from "./pages/Cykler";
 import Scootere from "./pages/Scootere";
 import Reparation from "./pages/Reparation";
 import Om from "./pages/Om";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Kontakt";
+import Finansiering from "./pages/Finansiering";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/reparation" element={<Reparation />} />
           <Route path="/om" element={<Om />} />
           <Route path="/kontakt" element={<Contact />} />
+          <Route path="/finansiering" element={<Finansiering />} />
         </Route>
       </Routes>
     </BrowserRouter>

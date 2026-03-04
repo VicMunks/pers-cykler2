@@ -1,3 +1,41 @@
+// ImageRotator component for local fikspunkt section
+function ImageRotator() {
+  const images = [
+    { src: "/images/facade.png", alt: "Facade af Pers cykler" },
+    { src: "/images/shop1.png", alt: "Butik Pers cykler 1" },
+    { src: "/images/shop2.png", alt: "Butik Pers cykler 2" },
+  ];
+  const [idx, setIdx] = useState(0);
+  const [fade, setFade] = useState(true);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setIdx((i) => (i + 1) % images.length);
+        setFade(true);
+      }, 400); // fade out duration
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [images.length]);
+  return (
+    <div className="w-full h-[320px] md:h-[420px] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden rotate-1 hover:rotate-0 transition-transform duration-500 shadow-2xl relative">
+      <img
+        src={images[idx].src}
+        alt={images[idx].alt}
+        className={`w-full h-full object-cover transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
+        style={{ opacity: fade ? 1 : 0 }}
+      />
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {images.map((_, i) => (
+          <span
+            key={i}
+            className={`w-2 h-2 rounded-full ${i === idx ? 'bg-primary' : 'bg-gray-300'} transition-colors`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -73,7 +111,7 @@ export default function Home() {
         <div className="absolute right-0 top-0 w-2/3 h-full hero-clip z-0 hidden md:block">
           <div className="absolute inset-0 bg-primary/25 z-10" />
           <img
-            src="/images/bike-hero.jpg"
+            src="/images/facade.png"
             alt="Cykelværksted"
             className="w-full h-full object-cover"
           />
@@ -160,7 +198,7 @@ export default function Home() {
                   </li>
                 </ul>
                 <Link
-                  to="/reparation"
+                  to="/kontakt"
                   className="text-primary font-extrabold flex items-center gap-2 group-hover:gap-4 transition-all"
                 >
                   Book reparation
@@ -229,22 +267,34 @@ export default function Home() {
       <section id="finansiering" className="py-20 bg-dark-base relative overflow-hidden mt-4">
         <div className="absolute left-0 top-0 w-full h-full opacity-10 pointer-events-none pattern-dot" />
         <div className="max-w-7xl mx-auto px-6 relative flex flex-col lg:flex-row items-center gap-16">
-          <div className="lg:w-1/2">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/20 rounded-full mb-6">
-              <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
-              <span className="text-secondary text-xs font-bold tracking-widest uppercase">
-                Smart finansiering
-              </span>
-            </div>
+          <div className="lg:w-1/2 flex flex-col items-start">
+            <img src="/images/sparxpres.png" alt="Sparxpres logo" className="h-12 w-auto mb-4" />
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-              Cyklen du drømmer om,
-              <br />
+              Cyklen du drømmer om,<br />
               <span className="text-secondary">betalt i dit tempo.</span>
             </h2>
             <p className="text-gray-400 text-base md:text-lg mb-8 leading-relaxed">
               Finansiering sker gennem <a className="underline" href="https://sparxpres.dk/ansoegning/?linkId=117898d5-9b5e-40db-8b9e-dc22cde98da6" target="_blank" rel="noreferrer">SparXpres</a> – nem ansøgning og hurtig godkendelse.
             </p>
-            <div className="space-y-6 mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <a
+                href="https://sparxpres.dk/ansoegning/?linkId=117898d5-9b5e-40db-8b9e-dc22cde98da6"
+                className="inline-flex items-center gap-3 bg-[#BE2B31] text-white px-7 md:px-8 py-3.5 md:py-4 rounded-2xl font-bold shadow-lg hover:bg-[#a51f25] transition-transform text-base md:text-lg"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ansøg nu
+                <span className="material-symbols-outlined">launch</span>
+              </a>
+              <a
+                href="/finansiering#finansiering-steps"
+                className="inline-flex items-center gap-2 bg-[#BE2B31]/10 text-[#BE2B31] px-6 py-3 rounded-2xl font-bold border border-[#BE2B31]/30 hover:bg-[#BE2B31]/20 transition-all text-base"
+              >
+                Se hvordan
+                <span className="material-symbols-outlined">arrow_downward</span>
+              </a>
+            </div>
+            <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <span className="font-bold text-white text-3xl">1.</span>
                 <p className="text-white">Udfyld ansøgningen online.</p>
@@ -258,15 +308,6 @@ export default function Home() {
                 <p className="text-white">Pengene udbetales direkte til butikken.</p>
               </div>
             </div>
-            <a
-              href="https://sparxpres.dk/ansoegning/?linkId=117898d5-9b5e-40db-8b9e-dc22cde98da6"
-              className="inline-flex items-center gap-3 bg-secondary text-white px-7 md:px-8 py-3.5 md:py-4 rounded-2xl font-bold hover:scale-105 transition-transform text-sm md:text-base"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Ansøg nu
-              <span className="material-symbols-outlined">launch</span>
-            </a>
           </div>
 
           <div className="lg:w-1/2 relative mt-10 lg:mt-0">
@@ -354,15 +395,9 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           <div className="lg:w-1/2 relative mb-6 lg:mb-0">
-            <div className="w-full h-[320px] md:h-[420px] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden rotate-1 hover:rotate-0 transition-transform duration-500 shadow-2xl">
-                <img
-                  src="/images/shop-front.jpg"
-                  alt="Facade af Pers cykler"
-                  className="w-full h-full object-cover"
-                />
-            </div>
-            <div className="absolute -bottom-6 -right-4 md:-bottom-10 md:-right-10 bg-secondary p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] text-white shadow-2xl max-w-[220px] md:max-w-xs -rotate-3">
-                <p className="text-3xl md:text-5xl font-black mb-1 md:mb-2">
+            <ImageRotator />
+            <div className="absolute -bottom-6 -right-4 md:-bottom-10 md:-right-10 bg-secondary p-5 md:p-8 rounded-[1.8rem] md:rounded-[2.2rem] text-white shadow-2xl max-w-[200px] md:max-w-[220px] -rotate-3">
+              <p className="text-3xl md:text-5xl font-black mb-1 md:mb-2">
                 45+
               </p>
               <p className="text-sm md:text-lg font-bold leading-tight">

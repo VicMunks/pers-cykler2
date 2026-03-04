@@ -38,9 +38,9 @@ export default function MainLayout() {
               <NavLink to="/om" className={navLinkClassName}>
                 Om
               </NavLink>
-              <a href="/#finansiering" className="text-sm font-bold text-gray-700 hover:text-secondary transition-colors">
+              <NavLink to="/finansiering" className={navLinkClassName}>
                 Finansiering
-              </a>
+              </NavLink>
               <NavLink to="/kontakt" className={navLinkClassName}>
                 Kontakt
               </NavLink>
@@ -108,7 +108,7 @@ export default function MainLayout() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-8">
-                  <span className="text-xl font-bold tracking-tighter">Pers cykler</span>
+                  <span className="text-xl font-bold tracking-tighter">PERS CYKLER</span>
                 </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-8">
                 Salg og reparation af cykler og scootere i Odense siden 1981. Din sikkerhed på vejen er vores prioritet.
@@ -129,6 +129,7 @@ export default function MainLayout() {
                 <li><a className="hover:text-secondary transition-colors" href="/scootere">Scootere</a></li>
                 <li><a className="hover:text-secondary transition-colors" href="/reparation">Reparation</a></li>
                 <li><a className="hover:text-secondary transition-colors" href="/om">Om</a></li>
+                <li><a className="hover:text-secondary transition-colors" href="/finansiering">Finansiering</a></li>
                 <li><a className="hover:text-secondary transition-colors" href="/kontakt">Kontakt</a></li>
               </ul>
             </div>

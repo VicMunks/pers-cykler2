@@ -1,29 +1,63 @@
+import React from "react";
+import { ModelCard } from "../components/ModelCard";
+
 export default function Scootere() {
   const models = [
     {
       name: "30 km/t Scootere",
-      description: "Perfekt til kortere ture rundt i byen. Sikker og responsiv.",
+      description: "Perfekt til byen. Typisk brug: Bykørsel og korte ture. Kan køres med lille knallertkørekort.",
       speed: "Max 30 km/t",
-      features: ["Dansk godkendelse", "Batterikapacitet: 25-30 km", "Vægt: fra 10 kg", "Fuldt ledelsesbar"],
-      icon: "⚡",
+      features: [
+        "Pris fra 12.995 kr.",
+        "Vægt: 83–96 kg",
+        "Benzinmotor, 49,6cc 4-takt, EFI indsprøjtning",
+        "Rækkevidde: 150-250 km",
+        "Tank: ca. 4,2–6 L",
+        "Automatisk gear (CVT)",
+        "El-start + kickstart",
+        "LED blink/lys, USB-stik",
+        "Bagagebærer, digitalt instrument",
+        "Skivebremse foran, tromlebremse bag"
+      ],
+      icon: "🛵",
       color: "#3B82F6",
       link: "https://motocr.dk/lille-knallert-30km-t/"
     },
     {
       name: "45 km/t Scootere",
-      description: "Længere rækkevidde og mere kraft. Ideal til daglig transport.",
+      description: "Hurtigere transport. Typisk brug: Længere ture og pendling.",
       speed: "Max 45 km/t",
-      features: ["Kraftigere motor", "Batterikapacitet: 45-60 km", "Vægt: 13-16 kg", "Dobbelt bremsesystem"],
+      features: [
+        "Pris fra 16.995 kr.",
+        "Vægt: 88–108 kg",
+        "Benzinmotor, 49,6cc 4-takt, EFI indsprøjtning, 2,9–3 hk",
+        "Rækkevidde: 200-300 km",
+        "Tank: ca. 5–8,5 L",
+        "Større hjul (12\")",
+        "Skivebremser, LED lys, USB opladning",
+        "Større sæde, bagagebærer",
+        "Bedre acceleration end 30 km/t modeller"
+      ],
       icon: "🚀",
       color: "#EF4444",
       link: "https://motocr.dk/stor-knallert-45km-t/"
     },
     {
       name: "El-scootere",
-      description: "Topmodeller med avanceret teknologi og maksimal komfort.",
-      speed: "Max 45 km/t+",
-      features: ["Digitalt display", "Smart suspension", "Batterikapacitet: 60+ km", "App-kontrol & GPS"],
-      icon: "🔋",
+      description: "Stille og miljøvenlig. Typisk brug: Stille bykørsel, lav drift.",
+      speed: "Max 45 km/t",
+      features: [
+        "Pris fra 17.495 kr.",
+        "Vægt: 70–110 kg",
+        "Elektrisk motor (ca. 800-2000W)",
+        "Batteri: typisk 48V / 26Ah",
+        "Rækkevidde: op til 50 km pr. opladning",
+        "Ladetid: ca. 6–8 timer",
+        "Meget støjsvag, ingen benzin",
+        "Lav vedligeholdelse, USB opladning",
+        "Digitalt display, mulighed for 2 batterier (long range)"
+      ],
+      icon: "⚡",
       color: "#10B981",
       link: "https://motocr.dk/lille-el-knallert-30km-t/"
     }
@@ -75,42 +109,26 @@ export default function Scootere() {
             <p className="text-lg text-gray-600">Tre kategorier tilpasset hver livsstil</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {models.map((model) => (
-              <article key={model.name} className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 border border-gray-100 overflow-hidden flex flex-col h-full">
-                <div className="text-4xl mb-4">{model.icon}</div>
-
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{model.name}</h3>
-                <p className="text-gray-600 mb-4 flex-1">{model.description}</p>
-
-                <div className="mb-6 p-4 rounded-xl" style={{ backgroundColor: `${model.color}10`, borderLeft: `4px solid ${model.color}` }}>
-                  <p className="font-bold text-gray-900">{model.speed}</p>
-                </div>
-
-                <div className="mb-6">
-                  <p className="text-sm font-semibold text-gray-500 mb-3 uppercase">Vigtigste features</p>
-                  <ul className="space-y-2">
-                    {model.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-sm text-gray-700">
-                        <span className="text-xl leading-none mt-0.5" style={{ color: model.color }}>✓</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <a
-                  href={model.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full inline-block text-center py-3 px-4 rounded-xl font-bold text-white transition-all duration-200 hover:opacity-90 hover:scale-105"
-                  style={{ backgroundColor: model.color }}
-                >
-                  Se priser
-                </a>
-              </article>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            {models.map((model) => {
+              const price = model.features.find(f => f.toLowerCase().includes("pris"));
+              const weight = model.features.find(f => f.toLowerCase().includes("vægt"));
+              const range = model.features.find(f => f.toLowerCase().includes("rækkevidde"));
+              return (
+                <ModelCard
+                  key={model.name}
+                  model={model}
+                  price={price}
+                  weight={weight}
+                  range={range}
+                />
+              );
+            })}
           </div>
+
+
+
+
         </div>
       </section>
 
@@ -118,22 +136,40 @@ export default function Scootere() {
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-12">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Hvorfor Vælge el-scootere?</h2>
-            <p className="text-lg text-gray-600">Moderne transport for det moderne liv</p>
+            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Hvorfor vælge el-scooter?</h2>
+            <p className="text-lg text-gray-600">El-scootere bliver mere og mere populære – især til bykørsel og korte ture. De er nemme at bruge, billige i drift og kræver meget lidt vedligeholdelse.</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col">
+              <div className="text-3xl mb-2">🔇</div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Støjsvag og behagelig kørsel</h3>
+              <p className="text-gray-600 flex-1">En el-scooter har en elektrisk motor, som næsten ikke larmer. Det giver en mere behagelig køreoplevelse og mindre støj i byen.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col">
+              <div className="text-3xl mb-2">💸</div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Billig i drift</h3>
+              <p className="text-gray-600 flex-1">Det koster meget lidt at oplade batteriet sammenlignet med benzin. Du slipper også for mange af de serviceudgifter, som benzinmotorer har.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col">
+              <div className="text-3xl mb-2">🔋</div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Nem opladning</h3>
+              <p className="text-gray-600 flex-1">Scooteren oplades i en almindelig 220V stikkontakt, og en fuld opladning tager typisk 6-8 timer.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col">
+              <div className="text-3xl mb-2">🛠</div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Mindre vedligeholdelse</h3>
+              <p className="text-gray-600 flex-1">Der er færre bevægelige dele i en elmotor end i en benzinmotor. Det betyder typisk mindre slid og færre reparationer.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col">
+              <div className="text-3xl mb-2">🌱</div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Et mere miljøvenligt valg</h3>
+              <p className="text-gray-600 flex-1">El-scootere udleder ikke CO₂ under kørsel og er derfor et mere miljøvenligt alternativ til benzin.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Accessories & Customization Placeholder */}
+      {/* Accessories & Customization */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-12 border border-purple-200">
@@ -148,7 +184,7 @@ export default function Scootere() {
         </div>
       </section>
 
-      {/* Support & Service Placeholder */}
+      {/* Support & Service */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -158,7 +194,7 @@ export default function Scootere() {
               <p className="text-gray-600 mb-6">
                 Vi tilbyder fuld servisering og vedligeholdelse af dine el-scootere. Kom forbi eller kontakt os for mere information.
               </p>
-              <a href="/contact" className="text-blue-600 hover:text-blue-700 font-semibold">Kontakt os →</a>
+              <a href="/kontakt" className="text-blue-600 hover:text-blue-700 font-semibold">Kontakt os →</a>
             </div>
 
             <div className="bg-white rounded-2xl p-8 shadow-md">
@@ -167,16 +203,16 @@ export default function Scootere() {
               <p className="text-gray-600 mb-6">
                 Alle modeller kommer med garanti. Vi kan også hjælpe med forsikringsløsninger.
               </p>
-              <a href="/contact" className="text-blue-600 hover:text-blue-700 font-semibold">Få mere info →</a>
+              <a href="/kontakt" className="text-blue-600 hover:text-blue-700 font-semibold">Få mere info →</a>
             </div>
 
             <div className="bg-white rounded-2xl p-8 shadow-md">
-              <div className="text-4xl mb-4">📱</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">App & Smart Features</h3>
+              <div className="text-4xl mb-4">🧰</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Reservedele & Tilbehør</h3>
               <p className="text-gray-600 mb-6">
-                Nogle af vores modeller kan kontrolleres via app. Spørg os om hvilke features der passer dig.
+                Vi har altid reservedele og tilbehør på lager – fx ekstra batterier, dæk, lygter og meget mere. Spørg os, hvis du mangler noget til din scooter.
               </p>
-              <a href="/contact" className="text-blue-600 hover:text-blue-700 font-semibold">Læs mere →</a>
+              <a href="/kontakt" className="text-blue-600 hover:text-blue-700 font-semibold">Få hjælp →</a>
             </div>
           </div>
         </div>
@@ -184,3 +220,4 @@ export default function Scootere() {
     </>
   );
 }
+

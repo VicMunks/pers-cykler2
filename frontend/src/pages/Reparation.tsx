@@ -75,11 +75,10 @@ export default function Reparation() {
         <div className="bg-white rounded-2xl p-8 shadow-md">
           <h3 className="text-xl font-bold text-gray-900 mb-3">Har du spørgsmål eller ønsker en vurdering?</h3>
           <p className="text-gray-600 mb-6">Vi hjælper gerne — book en tid eller bring dit køretøj ind til en vurdering.</p>
-          <a href="/contact" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200">
+          <a href="/kontakt" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200">
             Kontakt os
             <span className="material-symbols-outlined">arrow_right_alt</span>
           </a>
-          <p className="text-sm text-gray-500 mt-3">(Kontaktformular kommer snart — link fører til kontakt-siden.)</p>
         </div>
       </div>
     </section>

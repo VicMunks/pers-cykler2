@@ -54,9 +54,9 @@ export default function Om() {
 
         <div className="bg-white rounded-2xl p-6 shadow-md">
           <h3 className="text-lg font-bold text-gray-900 mb-2">Butik & Åbningstider</h3>
-          <p className="text-gray-600">Adresse: Vesterbro 12, 5000 Odense (eksempeladresse)</p>
+          <p className="text-gray-600">Adresse: Vesterbro 95, 5000 Odense</p>
           <p className="text-gray-600">Åbningstider: Man-Fre 10-17, Lør 10-13</p>
-          <p className="text-gray-600 mb-4">Telefon: <a href="tel:12345678" className="text-blue-600">12 34 56 78</a></p>
+          <p className="text-gray-600 mb-4">Telefon: <a href="tel:+4566148485" className="text-blue-600">66 14 84 85</a></p>
           <a href="/contact" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200">Kontakt os <span className="material-symbols-outlined">arrow_right_alt</span></a>
         </div>
       </div>
