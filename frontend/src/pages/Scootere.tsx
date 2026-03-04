@@ -1,4 +1,3 @@
-import React from "react";
 import { ModelCard } from "../components/ModelCard";
 
 export default function Scootere() {
@@ -63,12 +62,6 @@ export default function Scootere() {
     }
   ];
 
-  const benefits = [
-    { title: "Bæredygtig", description: "Nul emissioner - miljøvenligt transport" },
-    { title: "Økonomisk", description: "Lav vedligeholdelse og driftomkostninger" },
-    { title: "Fleksibel", description: "Smart opbevaring og let at transportere" },
-    { title: "Sikker", description: "Godkendt sikkerhed og pålidelig performance" }
-  ];
 
   return (
     <>
