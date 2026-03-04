@@ -71,9 +71,9 @@ export default function MainLayout() {
                 <NavLink to="/om" className={navLinkClassName} onClick={() => setMenuOpen(false)}>
                   Om
                 </NavLink>
-                <a href="/#finansiering" className="text-sm font-bold text-gray-700 hover:text-secondary transition-colors" onClick={() => setMenuOpen(false)}>
+                <NavLink to="/finansiering" className={navLinkClassName} onClick={() => setMenuOpen(false)}>
                   Finansiering
-                </a>
+                </NavLink>
                 <NavLink to="/kontakt" className={navLinkClassName} onClick={() => setMenuOpen(false)}>
                   Kontakt
                 </NavLink>
